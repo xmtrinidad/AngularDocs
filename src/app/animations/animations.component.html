@@ -1,0 +1,11 @@
+<div class="buttons text-center">
+  <button [disabled]="!heroService.canAdd()" (click)="heroService.addInactive()">Add inactive hero</button>
+  <button [disabled]="!heroService.canAdd()" (click)="heroService.addActive()">Add active hero</button>
+  <button [disabled]="!heroService.canRemove()" (click)="heroService.remove()">Remove hero</button>
+</div>
+
+<div class="container">
+  <app-hero-list-basic [heroes]="heroes"></app-hero-list-basic>
+  <app-my-basic-example></app-my-basic-example>
+  <app-dropdown-example></app-dropdown-example>
+</div>

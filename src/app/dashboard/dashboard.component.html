@@ -1,0 +1,8 @@
+<div class="container">
+  <div *ngFor="let doc of docs">
+    <a routerLink="{{doc.link}}" class="btn btn-primary">
+      <h4 class="title">{{doc.title}}</h4>
+      <small class="subtitle">{{doc.subtitle}}</small>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div *ngIf="items?.length > 0; else noItems">
+  <ul *ngFor="let item of items">
+    <li>
+      <strong>{{item.title}}</strong> {{item.description}}
+      (<a *ngIf="!editState" (click)="editItem($event, item)" href="#">Edit</a><a
+      *ngIf="editState && itemToEdit.id === item.id" (click)="clearState($event, item)" href="#">Close</a>)
+
+      <div *ngIf="editState && itemToEdit.id === item.id">
+
+        <form>
+          <div class="form-group">
+            <label for="">Enter Item:</label>
+            <input [(ngModel)]="item.title" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Enter Description</label>
+            <input [(ngModel)]="item.description" type="text" class="form-control">
+          </div>
+          <button (click)="updateItem($event, item)" type="button" class="btn btn-success" value="Update Item">Update Item</button>
+          <button (click)="deleteItem($event, item)" class="btn btn-danger">Delete Item</button>
+        </form>
+
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noItems>
+  <hr>
+  <h5>There are no items in the list</h5>
+</ng-template>
+
+<form class="form">
+  <div class="form-group">
+    <label for="">Enter Item:</label>
+    <input [(ngModel)]="item.title" type="text" class="form-control" name="title">
+  </div>
+  <div class="form-group">
+    <label for="">Enter Description:</label>
+    <input [(ngModel)]="item.description" type="text" class="form-control" name="desc">
+  </div>
+  <div>
+    <input (click)="onSubmit()" class="btn btn-primary" type="submit" value="Submit">
+  </div>
+</form>

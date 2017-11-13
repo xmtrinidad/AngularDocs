@@ -1,0 +1,15 @@
+<div class="cards">
+  <div *ngFor="let example of examples" class="card">
+    <div class="card-header">
+      <h4>{{example.description}}</h4>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li *ngFor="let skill of example.skills">{{skill}}</li>
+      </ul>
+    </div>
+    <div class="text-center mb-2">
+      <a routerLink="{{example.link}}" class="btn btn-primary">Go to Section</a>
+    </div>
+  </div>
+</div>

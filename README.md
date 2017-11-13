@@ -1,27 +1,53 @@
-# AngularDocs
+# Angular Docs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+* For practicing and learning new concepts related to Angular
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Creating a new section
+1.  Generate the component
+2.  Navigate to the app.data.ts file
+3.  Add the following object to the array of docs
+    ```typescript
+    {
+      title: '',
+      subtitle: '',
+      link: '/'
+    }
+    ```
+4.  Enter info about the doc into the object
+5.  Update app-routing.module with the link added to the array of docs and new component
+    ```typescript
+    const routes: Routes = [
+      ...
+      { path: 'section', component: NewSectionComponent} 
+    ]
+    ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Creating sub-sections
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1.  Inside the component, use the following HTML template:
+    ```HTML
+    <h1 class="display-4 text-center">Cloud Firestore</h1>
+    <app-resources [resources]="resources"></app-resources>
+    <hr>
+    <div class="container">
+      <app-example-card-info [examples]="examples"></app-example-card-info>
+    </div>
+    ```
+2.  In the components typescript file use the following template to generate resource info and cards:
+    ```typescript
+    import { Resource } from '../models/resource';
+    import { Example } from '../models/example';
+    ```
+    * Inside the class insert:
+    ```typescript
+    resources: Resource[] = [ {title: '',link: ''} ];
+    examples: Example[] = [ { description: '', skills: [''], link: '/SECTION/' }];
+    ```
+3.  Populate any data related to the resources used in the section.
+4.  Create a new section module and routing module
+5.  Generate any new subsection components and add its information to the array of examples data in the main section component.
+6.  Add routing to the subsection components in the section routing module

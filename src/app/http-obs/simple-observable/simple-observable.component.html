@@ -1,0 +1,5 @@
+<h4>Simple Observables Example</h4>
+<button (click)="getInfo()" type="button" class="btn btn-primary">JSON Data</button>
+<ul *ngIf="results">
+  <li *ngFor="let result of results">{{result}}</li>
+</ul>
